@@ -1,0 +1,42 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: gateway
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8840
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        import-check:
+          enabled: false
+  config:
+    import: nacos:gateway.yaml
+
+#    gateway:
+#      routes:
+#        - id: nacos-consumer
+#          uri: lb://nacos-consumer
+#          predicates:
+#            - Path=/consumer/**
+#          filters:
+#            - PrefixPath=/consumer
+#            - StripPrefix=1
+#      globalcors:
+#        cors-configurations:
+#          '[/**]': # 匹配所有请求
+#            allowedOrigins: "*" # 跨域处理 允许所有的域
+#            allowedMethods: # 支持的方法
+#              - GET
+#              - POST
+#              - PUT
+#              - DELETE
+
+
+
+
